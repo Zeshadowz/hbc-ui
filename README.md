@@ -67,3 +67,8 @@ export default tseslint.config([
   },
 ])
 ```
+
+## Dependencies
+* `clsx` for conditional class management
+* `tailwind-merge` to handle class merging
+* `lucide-react` for icons

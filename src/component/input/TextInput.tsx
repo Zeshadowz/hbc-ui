@@ -1,8 +1,6 @@
-import type {InputProps} from "./types.ts";
-import BaseInput from "./BaseInput.tsx";
+import type { InputProps } from "../types.ts";
+import BaseInputField from "./BaseInputField.tsx";
 
-function TextInput(props: Omit<InputProps, "type">){
-    return <BaseInput {...props} type="text" />;
+export function TextInput(props: Omit<InputProps, "type">){
+    return <BaseInputField {...props} type="text" />
 }
-
-export default TextInput;
