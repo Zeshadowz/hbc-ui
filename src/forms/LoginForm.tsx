@@ -5,6 +5,7 @@ import { PasswordInput } from "../component/input/PasswordInput.tsx";
 import { validatePassword } from "../utils/validate.ts";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Button from "../component/button/Button.tsx";
 
 
 interface FormErrors {
@@ -68,7 +69,6 @@ function LoginForm({navigateTo}: LoginProps) {
                 placeholder="Enter your username"
                 value={username}
                 onChange={handleUsernameChange}
-                // onChange={(e) => setUsername(e.target.value)}
                 error={errors.username}
             />
             <PasswordInput
@@ -82,11 +82,11 @@ function LoginForm({navigateTo}: LoginProps) {
                 showPassword={showPassword}
                 error={errors.password}
             />
-            <button
-                className="lqd-btn group inline-flex items-center justify-center gap-1.5 font-medium rounded-full transition-all hover:-translate-y-0.5 hover:shadow-xl lqd-btn-primary bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:bg-indigo-700 focus-visible:shadow-indigo-300/10 px-5 py-3"
-                id="LoginFormButton" type="submit">
-                Sign in
-            </button>
+            <Button
+                id="LoginFormButton"
+                label="Sign In"
+                type="submit"
+                onClick={handleSubmit}/>
         </form>
     );
 }

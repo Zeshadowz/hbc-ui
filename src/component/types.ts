@@ -17,11 +17,13 @@ export interface InputProps {
 }
 
 export interface ButtonPros {
+    id: string;
+    label: string;
     children?: ReactNode;
     variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'outline';
-    loading?: boolean;
     disabled?: boolean;
     type?: 'button' | 'submit' | 'reset';
     onClick?: MouseEventHandler<HTMLButtonElement>;
     className?: string;
+    isLoading?: boolean;
 }
