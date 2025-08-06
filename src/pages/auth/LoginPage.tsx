@@ -1,5 +1,4 @@
 import LoginForm from "../../forms/LoginForm.tsx";
-import { TextInput } from "../../component/input/TextInput.tsx";
 
 function LoginPage() {
     return (
@@ -10,7 +9,9 @@ function LoginPage() {
                     <h1 className="mb-8 text-2xl font-bold text-gray-800 dark:text-white">Welcome Back</h1>
                     <p className="mb-6 text-gray-600 dark:text-gray-400">Access your account to explore our amazing
                         features.</p>
-                    <LoginForm/>
+                    <LoginForm
+                        navigateTo="/login"
+                    />
                     <div className="mt-20 text-gray-600 dark:text-gray-400">
                         Don't have an account yet?
                         <a className="font-medium text-indigo-600 underline" href="/register">Sign up</a>
@@ -19,7 +20,7 @@ function LoginPage() {
             </div>
             <div
                 className="hidden flex-col justify-center overflow-hidden bg-cover bg-center md:flex md:w-1/2 bg-amber-500">
-                <TextInput placeholder="Enter your name"/>
+
             </div>
         </div>
     )
