@@ -6,6 +6,7 @@ import { validatePassword } from "../utils/validate.ts";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Button from "../component/button/Button.tsx";
+import { mockLogin, mockLoginApi } from "../utils/mock.ts";
 
 
 interface FormErrors {
@@ -22,6 +23,7 @@ function LoginForm({navigateTo}: LoginProps) {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState<FormErrors>({});
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +40,7 @@ function LoginForm({navigateTo}: LoginProps) {
         setShowPassword(!showPassword);
     }
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setErrors({});
 
@@ -47,17 +49,21 @@ function LoginForm({navigateTo}: LoginProps) {
 
         if (passError) {
             setErrors({password: passError});
-            toast.error('Login failed. Please try again.');
             return;
         }
 
+        setIsLoading(true);
         try {
-
+            // simulate login
+            await mockLoginApi(username, password);
+            await mockLogin(username, password);
             toast.success('Login successfully.');
             navigate(`${navigateTo}`);
         } catch (error) {
             toast.error('Login failed. Please try again.');
             console.log(error)
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -86,6 +92,7 @@ function LoginForm({navigateTo}: LoginProps) {
                 id="LoginFormButton"
                 label="Sign In"
                 type="submit"
+                isLoading={isLoading}
                 onClick={handleSubmit}/>
         </form>
     );

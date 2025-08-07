@@ -1,6 +1,6 @@
 import LoginForm from "../../forms/LoginForm.tsx";
 
-function LoginPage() {
+function Login() {
     return (
         <div
             className="flex min-h-screen w-full flex-wrap items-stretch bg-white dark:bg-gray-800 max-md:pb-20 max-md:pt-32">
@@ -10,7 +10,7 @@ function LoginPage() {
                     <p className="mb-6 text-gray-600 dark:text-gray-400">Access your account to explore our amazing
                         features.</p>
                     <LoginForm
-                        navigateTo="/login"
+                        navigateTo="/dashboard"
                     />
                     <div className="mt-20 text-gray-600 dark:text-gray-400">
                         Don't have an account yet?
@@ -26,4 +26,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage;
+export default Login;
